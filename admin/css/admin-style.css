@@ -1,0 +1,1385 @@
+/* ==========================================================================
+   AmacarUN Race Manager - Admin Styles
+   ========================================================================== */
+
+/* Variables CSS */
+:root {
+    --amacarun-primary: #c41e3a;
+    --amacarun-primary-light: #e63946;
+    --amacarun-primary-dark: #a11729;
+    --amacarun-secondary: #f1faee;
+    --amacarun-success: #2d6a4f;
+    --amacarun-warning: #f77f00;
+    --amacarun-danger: #d00000;
+    --amacarun-info: #0077be;
+    --amacarun-light: #f8f9fa;
+    --amacarun-dark: #212529;
+    --amacarun-border: #dee2e6;
+    --amacarun-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --amacarun-shadow-lg: 0 4px 12px rgba(0,0,0,0.15);
+    --amacarun-radius: 6px;
+    --amacarun-radius-lg: 12px;
+    --amacarun-transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   Layout Generale
+   ========================================================================== */
+
+.amacarun-admin-container {
+    max-width: 1400px;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.amacarun-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border-bottom: 3px solid var(--amacarun-primary);
+}
+
+.amacarun-header h1 {
+    color: var(--amacarun-primary);
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.amacarun-header h1::before {
+    content: "🏃";
+    font-size: 1.5rem;
+}
+
+.amacarun-header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* ==========================================================================
+   Cards e Panels
+   ========================================================================== */
+
+.amacarun-card {
+    background: #fff;
+    border-radius: var(--amacarun-radius-lg);
+    box-shadow: var(--amacarun-shadow);
+    padding: 25px;
+    margin-bottom: 25px;
+    border-left: 4px solid var(--amacarun-primary);
+    transition: var(--amacarun-transition);
+}
+
+.amacarun-card:hover {
+    box-shadow: var(--amacarun-shadow-lg);
+    transform: translateY(-2px);
+}
+
+.amacarun-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--amacarun-border);
+}
+
+.amacarun-card-title {
+    color: var(--amacarun-primary);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.amacarun-card-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.amacarun-panel {
+    background: var(--amacarun-light);
+    border: 1px solid var(--amacarun-border);
+    border-radius: var(--amacarun-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   Statistiche Dashboard
+   ========================================================================== */
+
+.amacarun-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.amacarun-stat-card {
+    background: linear-gradient(135deg, #fff 0%, var(--amacarun-secondary) 100%);
+    border-radius: var(--amacarun-radius-lg);
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: var(--amacarun-shadow);
+    border-left: 5px solid var(--amacarun-primary);
+    transition: var(--amacarun-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.amacarun-stat-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--amacarun-primary), var(--amacarun-primary-light));
+    z-index: -1;
+    border-radius: var(--amacarun-radius-lg);
+    opacity: 0;
+    transition: var(--amacarun-transition);
+}
+
+.amacarun-stat-card:hover::before {
+    opacity: 1;
+}
+
+.amacarun-stat-card:hover {
+    transform: translateY(-5px);
+    color: #fff;
+}
+
+.amacarun-stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--amacarun-primary);
+    line-height: 1;
+    margin-bottom: 8px;
+    transition: var(--amacarun-transition);
+}
+
+.amacarun-stat-card:hover .amacarun-stat-number {
+    color: #fff;
+}
+
+.amacarun-stat-label {
+    font-size: 0.95rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    transition: var(--amacarun-transition);
+}
+
+.amacarun-stat-card:hover .amacarun-stat-label {
+    color: rgba(255,255,255,0.9);
+}
+
+/* Varianti colore statistiche */
+.amacarun-stat-card.participants { border-left-color: var(--amacarun-info); }
+.amacarun-stat-card.adults { border-left-color: var(--amacarun-success); }
+.amacarun-stat-card.children { border-left-color: var(--amacarun-warning); }
+.amacarun-stat-card.checked-in { border-left-color: var(--amacarun-success); }
+.amacarun-stat-card.bibs { border-left-color: var(--amacarun-info); }
+.amacarun-stat-card.mailpoet { border-left-color: #ff6900; }
+
+/* ==========================================================================
+   Tabelle
+   ========================================================================== */
+
+.amacarun-table-container {
+    background: #fff;
+    border-radius: var(--amacarun-radius);
+    overflow: hidden;
+    box-shadow: var(--amacarun-shadow);
+    margin: 20px 0;
+}
+
+.amacarun-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.amacarun-table thead {
+    background: var(--amacarun-primary);
+    color: #fff;
+}
+
+.amacarun-table th {
+    padding: 15px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.amacarun-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--amacarun-border);
+    vertical-align: middle;
+}
+
+.amacarun-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.amacarun-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Stili colonne specifiche */
+.amacarun-table .bib-number {
+    font-weight: bold;
+    color: var(--amacarun-primary);
+    font-size: 1.1rem;
+}
+
+.amacarun-table .participant-name {
+    font-weight: 600;
+}
+
+.amacarun-table .participant-email {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Stati e Badge
+   ========================================================================== */
+
+.amacarun-status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+}
+
+.amacarun-status-registered {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border: 1px solid #bbdefb;
+}
+
+.amacarun-status-checked-in {
+    background-color: #e8f5e8;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.amacarun-status-retired {
+    background-color: #fff3e0;
+    color: #f57c00;
+    border: 1px solid #ffcc02;
+}
+
+.amacarun-status-active {
+    background-color: #e8f5e8;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.amacarun-status-draft {
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+    border: 1px solid #e1bee7;
+}
+
+.amacarun-status-completed {
+    background-color: #e0e0e0;
+    color: #424242;
+    border: 1px solid #bdbdbd;
+}
+
+/* ==========================================================================
+   Form Controls
+   ========================================================================== */
+
+.amacarun-form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: flex-end;
+}
+
+.amacarun-form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.amacarun-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--amacarun-dark);
+    font-size: 0.9rem;
+}
+
+.amacarun-form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--amacarun-border);
+    border-radius: var(--amacarun-radius);
+    font-size: 0.95rem;
+    transition: var(--amacarun-transition);
+    background: #fff;
+}
+
+.amacarun-form-control:focus {
+    outline: none;
+    border-color: var(--amacarun-primary);
+    box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.1);
+}
+
+.amacarun-form-control.error {
+    border-color: var(--amacarun-danger);
+}
+
+.amacarun-form-help {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Input specifici */
+.amacarun-bib-input {
+    width: 100px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.amacarun-search-input {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23666"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>') no-repeat 15px center;
+    background-size: 18px;
+    padding-left: 45px;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.amacarun-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: var(--amacarun-radius);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: var(--amacarun-transition);
+    min-height: 44px;
+    box-sizing: border-box;
+}
+
+.amacarun-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--amacarun-shadow);
+}
+
+.amacarun-btn:active {
+    transform: translateY(0);
+}
+
+.amacarun-btn-primary {
+    background: linear-gradient(135deg, var(--amacarun-primary) 0%, var(--amacarun-primary-light) 100%);
+    color: #fff;
+}
+
+.amacarun-btn-primary:hover {
+    background: linear-gradient(135deg, var(--amacarun-primary-dark) 0%, var(--amacarun-primary) 100%);
+    color: #fff;
+}
+
+.amacarun-btn-secondary {
+    background: #6c757d;
+    color: #fff;
+}
+
+.amacarun-btn-secondary:hover {
+    background: #5a6268;
+    color: #fff;
+}
+
+.amacarun-btn-success {
+    background: var(--amacarun-success);
+    color: #fff;
+}
+
+.amacarun-btn-warning {
+    background: var(--amacarun-warning);
+    color: #fff;
+}
+
+.amacarun-btn-danger {
+    background: var(--amacarun-danger);
+    color: #fff;
+}
+
+.amacarun-btn-outline {
+    background: transparent;
+    color: var(--amacarun-primary);
+    border: 2px solid var(--amacarun-primary);
+}
+
+.amacarun-btn-outline:hover {
+    background: var(--amacarun-primary);
+    color: #fff;
+}
+
+.amacarun-btn-sm {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+    min-height: 36px;
+}
+
+.amacarun-btn-lg {
+    padding: 15px 25px;
+    font-size: 1rem;
+    min-height: 52px;
+}
+
+/* Button groups */
+.amacarun-btn-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.amacarun-btn-group .amacarun-btn {
+    flex: 1;
+    min-width: 120px;
+}
+
+/* ==========================================================================
+   Check-in Interface
+   ========================================================================== */
+
+.amacarun-checkin-container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.amacarun-checkin-search {
+    background: #fff;
+    padding: 30px;
+    border-radius: var(--amacarun-radius-lg);
+    box-shadow: var(--amacarun-shadow);
+}
+
+.amacarun-checkin-stats {
+    background: linear-gradient(135deg, var(--amacarun-primary) 0%, var(--amacarun-primary-light) 100%);
+    color: #fff;
+    padding: 25px;
+    border-radius: var(--amacarun-radius-lg);
+    box-shadow: var(--amacarun-shadow);
+}
+
+.amacarun-participant-card {
+    background: #fff;
+    border: 2px solid var(--amacarun-border);
+    border-radius: var(--amacarun-radius);
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: var(--amacarun-transition);
+    cursor: pointer;
+}
+
+.amacarun-participant-card:hover {
+    border-color: var(--amacarun-primary);
+    box-shadow: var(--amacarun-shadow);
+}
+
+.amacarun-participant-card.selected {
+    border-color: var(--amacarun-primary);
+    background: rgba(196, 30, 58, 0.05);
+}
+
+.amacarun-participant-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.amacarun-participant-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--amacarun-dark);
+}
+
+.amacarun-participant-bib {
+    background: var(--amacarun-primary);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.amacarun-participant-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Progress Bars
+   ========================================================================== */
+
+.amacarun-progress {
+    background: #e9ecef;
+    border-radius: var(--amacarun-radius);
+    height: 25px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.amacarun-progress-bar {
+    background: linear-gradient(135deg, var(--amacarun-primary) 0%, var(--amacarun-primary-light) 100%);
+    height: 100%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: width 0.6s ease;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.amacarun-progress-bar.animated {
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.15) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0.15) 75%,
+        transparent 75%,
+        transparent
+    );
+    background-size: 1rem 1rem;
+    animation: amacarun-progress-stripes 1s linear infinite;
+}
+
+@keyframes amacarun-progress-stripes {
+    0% { background-position: 1rem 0; }
+    100% { background-position: 0 0; }
+}
+
+/* ==========================================================================
+   Alerts e Notice
+   ========================================================================== */
+
+.amacarun-alert {
+    padding: 15px 20px;
+    border-radius: var(--amacarun-radius);
+    margin: 15px 0;
+    border-left: 4px solid;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.amacarun-alert-success {
+    background: #d1edff;
+    color: #0c5460;
+    border-color: var(--amacarun-success);
+}
+
+.amacarun-alert-warning {
+    background: #fff3cd;
+    color: #856404;
+    border-color: var(--amacarun-warning);
+}
+
+.amacarun-alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    border-color: var(--amacarun-danger);
+}
+
+.amacarun-alert-info {
+    background: #cce7ff;
+    color: #004085;
+    border-color: var(--amacarun-info);
+}
+
+.amacarun-alert .amacarun-alert-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* ==========================================================================
+   Loading States
+   ========================================================================== */
+
+.amacarun-loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--amacarun-primary);
+    border-radius: 50%;
+    animation: amacarun-spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes amacarun-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.amacarun-loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.amacarun-loading-spinner {
+    background: #fff;
+    padding: 30px;
+    border-radius: var(--amacarun-radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    box-shadow: var(--amacarun-shadow-lg);
+}
+
+.amacarun-loading-spinner .amacarun-loading {
+    width: 40px;
+    height: 40px;
+    border-width: 4px;
+    margin: 0;
+}
+
+/* ==========================================================================
+   Tabs
+   ========================================================================== */
+
+.amacarun-tabs {
+    margin: 20px 0;
+}
+
+.amacarun-tab-nav {
+    display: flex;
+    border-bottom: 3px solid var(--amacarun-border);
+    gap: 0;
+}
+
+.amacarun-tab-link {
+    padding: 15px 25px;
+    background: none;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    transition: var(--amacarun-transition);
+    border-bottom: 3px solid transparent;
+    text-decoration: none;
+}
+
+.amacarun-tab-link:hover {
+    color: var(--amacarun-primary);
+    background: rgba(196, 30, 58, 0.05);
+}
+
+.amacarun-tab-link.active {
+    color: var(--amacarun-primary);
+    border-bottom-color: var(--amacarun-primary);
+    background: rgba(196, 30, 58, 0.05);
+}
+
+.amacarun-tab-content {
+    padding: 25px;
+    background: #fff;
+    border-radius: 0 0 var(--amacarun-radius) var(--amacarun-radius);
+}
+
+/* ==========================================================================
+   Modals
+   ========================================================================== */
+
+.amacarun-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--amacarun-transition);
+}
+
+.amacarun-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.amacarun-modal {
+    background: #fff;
+    border-radius: var(--amacarun-radius-lg);
+    box-shadow: var(--amacarun-shadow-lg);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    transform: scale(0.7);
+    transition: var(--amacarun-transition);
+}
+
+.amacarun-modal-overlay.active .amacarun-modal {
+    transform: scale(1);
+}
+
+.amacarun-modal-header {
+    padding: 25px 30px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.amacarun-modal-title {
+    color: var(--amacarun-primary);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.amacarun-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #999;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--amacarun-transition);
+}
+
+.amacarun-modal-close:hover {
+    background: #f8f9fa;
+    color: var(--amacarun-danger);
+}
+
+.amacarun-modal-body {
+    padding: 25px 30px;
+}
+
+.amacarun-modal-footer {
+    padding: 0 30px 25px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-top: 1px solid var(--amacarun-border);
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+    .amacarun-checkin-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .amacarun-stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .amacarun-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .amacarun-header-actions {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .amacarun-form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .amacarun-btn-group {
+        flex-direction: column;
+    }
+    
+    .amacarun-btn-group .amacarun-btn {
+        min-width: auto;
+    }
+    
+    .amacarun-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .amacarun-tab-nav {
+        flex-wrap: wrap;
+    }
+    
+    .amacarun-tab-link {
+        flex: 1;
+        text-align: center;
+        min-width: 120px;
+    }
+    
+    .amacarun-table-container {
+        overflow-x: auto;
+    }
+    
+    .amacarun-table {
+        min-width: 600px;
+    }
+    
+    .amacarun-modal {
+        width: 95%;
+        margin: 20px;
+    }
+    
+    .amacarun-modal-header,
+    .amacarun-modal-body,
+    .amacarun-modal-footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .amacarun-card {
+        padding: 20px;
+        margin-left: -10px;
+        margin-right: -10px;
+        border-radius: 0;
+        border-left: none;
+        border-top: 4px solid var(--amacarun-primary);
+    }
+    
+    .amacarun-participant-card {
+        padding: 15px;
+    }
+    
+    .amacarun-participant-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+    .amacarun-header-actions,
+    .amacarun-btn,
+    .amacarun-modal-overlay,
+    .amacarun-loading-overlay {
+        display: none !important;
+    }
+    
+    .amacarun-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+        margin-bottom: 15px;
+    }
+    
+    .amacarun-table {
+        font-size: 0.8rem;
+    }
+    
+    .amacarun-table th,
+    .amacarun-table td {
+        padding: 8px 6px;
+    }
+}
+
+/* ==========================================================================
+   Utilità
+   ========================================================================== */
+
+.amacarun-text-center { text-align: center; }
+.amacarun-text-left { text-align: left; }
+.amacarun-text-right { text-align: right; }
+
+.amacarun-text-primary { color: var(--amacarun-primary); }
+.amacarun-text-success { color: var(--amacarun-success); }
+.amacarun-text-warning { color: var(--amacarun-warning); }
+.amacarun-text-danger { color: var(--amacarun-danger); }
+.amacarun-text-muted { color: #6c757d; }
+
+.amacarun-bg-light { background-color: var(--amacarun-light); }
+.amacarun-bg-primary { background-color: var(--amacarun-primary); }
+
+.amacarun-mt-0 { margin-top: 0; }
+.amacarun-mt-1 { margin-top: 10px; }
+.amacarun-mt-2 { margin-top: 20px; }
+.amacarun-mt-3 { margin-top: 30px; }
+
+.amacarun-mb-0 { margin-bottom: 0; }
+.amacarun-mb-1 { margin-bottom: 10px; }
+.amacarun-mb-2 { margin-bottom: 20px; }
+.amacarun-mb-3 { margin-bottom: 30px; }
+
+.amacarun-p-0 { padding: 0; }
+.amacarun-p-1 { padding: 10px; }
+.amacarun-p-2 { padding: 20px; }
+.amacarun-p-3 { padding: 30px; }
+
+.amacarun-d-none { display: none; }
+.amacarun-d-block { display: block; }
+.amacarun-d-flex { display: flex; }
+.amacarun-d-grid { display: grid; }
+
+.amacarun-flex-wrap { flex-wrap: wrap; }
+.amacarun-flex-nowrap { flex-wrap: nowrap; }
+.amacarun-justify-center { justify-content: center; }
+.amacarun-justify-between { justify-content: space-between; }
+.amacarun-align-center { align-items: center; }
+
+.amacarun-w-100 { width: 100%; }
+.amacarun-h-100 { height: 100%; }
+
+.amacarun-rounded { border-radius: var(--amacarun-radius); }
+.amacarun-rounded-lg { border-radius: var(--amacarun-radius-lg); }
+
+.amacarun-shadow { box-shadow: var(--amacarun-shadow); }
+.amacarun-shadow-lg { box-shadow: var(--amacarun-shadow-lg); }
+
+/* Hide/Show utilities */
+.amacarun-hide { display: none !important; }
+.amacarun-show { display: block !important; }
+
+/* Animation utilities */
+.amacarun-fade-in {
+    animation: amacarunFadeIn 0.3s ease-in-out;
+}
+
+.amacarun-slide-in {
+    animation: amacarunSlideIn 0.3s ease-in-out;
+}
+
+@keyframes amacarunFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes amacarunSlideIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(-10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* ==========================================================================
+   DataTables Customization
+   ========================================================================== */
+
+.amacarun-admin-container .dataTables_wrapper {
+    padding: 0;
+}
+
+.amacarun-admin-container .dataTables_length,
+.amacarun-admin-container .dataTables_filter {
+    margin-bottom: 20px;
+}
+
+.amacarun-admin-container .dataTables_filter input {
+    border: 2px solid var(--amacarun-border);
+    border-radius: var(--amacarun-radius);
+    padding: 8px 12px;
+    margin-left: 10px;
+}
+
+.amacarun-admin-container .dataTables_info {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.amacarun-admin-container .dataTables_paginate .paginate_button {
+    background: var(--amacarun-primary);
+    color: #fff !important;
+    border: none;
+    border-radius: var(--amacarun-radius);
+    margin: 0 2px;
+    padding: 8px 12px;
+    transition: var(--amacarun-transition);
+}
+
+.amacarun-admin-container .dataTables_paginate .paginate_button:hover {
+    background: var(--amacarun-primary-dark) !important;
+    color: #fff !important;
+}
+
+.amacarun-admin-container .dataTables_paginate .paginate_button.current {
+    background: var(--amacarun-primary-dark) !important;
+    color: #fff !important;
+}
+
+/* ==========================================================================
+   Chart.js Customization
+   ========================================================================== */
+
+.amacarun-chart-container {
+    background: #fff;
+    border-radius: var(--amacarun-radius);
+    padding: 20px;
+    box-shadow: var(--amacarun-shadow);
+    margin: 20px 0;
+}
+
+.amacarun-chart-container canvas {
+    max-height: 400px;
+}
+
+/* ==========================================================================
+   Custom Scrollbar
+   ========================================================================== */
+
+.amacarun-admin-container ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.amacarun-admin-container ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.amacarun-admin-container ::-webkit-scrollbar-thumb {
+    background: var(--amacarun-primary);
+    border-radius: 4px;
+    transition: var(--amacarun-transition);
+}
+
+.amacarun-admin-container ::-webkit-scrollbar-thumb:hover {
+    background: var(--amacarun-primary-dark);
+}
+
+/* ==========================================================================
+   Event Form Specific Styles
+   ========================================================================== */
+
+.amacarun-event-form {
+    background: #fff;
+    border-radius: var(--amacarun-radius-lg);
+    box-shadow: var(--amacarun-shadow);
+    padding: 30px;
+}
+
+.amacarun-event-form .form-section {
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 2px solid var(--amacarun-border);
+}
+
+.amacarun-event-form .form-section:last-child {
+    border-bottom: none;
+}
+
+.amacarun-event-form .section-title {
+    color: var(--amacarun-primary);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.amacarun-event-form .section-title::before {
+    content: "📅";
+    font-size: 1.1rem;
+}
+
+.amacarun-event-form .woocommerce-section .section-title::before {
+    content: "🛒";
+}
+
+.amacarun-event-form .mailpoet-section .section-title::before {
+    content: "📧";
+}
+
+.amacarun-event-form .bibs-section .section-title::before {
+    content: "🔢";
+}
+
+/* ==========================================================================
+   Connection Status
+   ========================================================================== */
+
+.amacarun-connection-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+    border-radius: var(--amacarun-radius);
+    margin: 15px 0;
+    font-weight: 600;
+}
+
+.amacarun-connection-status.success {
+    background: #d1edff;
+    color: #0c5460;
+    border-left: 4px solid var(--amacarun-success);
+}
+
+.amacarun-connection-status.warning {
+    background: #fff3cd;
+    color: #856404;
+    border-left: 4px solid var(--amacarun-warning);
+}
+
+.amacarun-connection-status.error {
+    background: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid var(--amacarun-danger);
+}
+
+.amacarun-connection-status::before {
+    content: "✓";
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.amacarun-connection-status.warning::before {
+    content: "⚠";
+}
+
+.amacarun-connection-status.error::before {
+    content: "✗";
+}
+
+/* ==========================================================================
+   Bulk Actions
+   ========================================================================== */
+
+.amacarun-bulk-actions {
+    background: var(--amacarun-light);
+    border: 2px solid var(--amacarun-border);
+    border-radius: var(--amacarun-radius);
+    padding: 20px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.amacarun-bulk-actions label {
+    font-weight: 600;
+    color: var(--amacarun-dark);
+    margin: 0;
+}
+
+.amacarun-bulk-actions select {
+    border: 2px solid var(--amacarun-border);
+    border-radius: var(--amacarun-radius);
+    padding: 8px 12px;
+    background: #fff;
+    min-width: 180px;
+}
+
+.amacarun-bulk-actions .amacarun-btn {
+    padding: 10px 20px;
+    min-height: auto;
+}
+
+/* ==========================================================================
+   Settings Page
+   ========================================================================== */
+
+.amacarun-settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.amacarun-settings-section {
+    background: #fff;
+    border-radius: var(--amacarun-radius-lg);
+    box-shadow: var(--amacarun-shadow);
+    padding: 25px;
+    border-left: 4px solid var(--amacarun-primary);
+}
+
+.amacarun-settings-section h3 {
+    color: var(--amacarun-primary);
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.amacarun-settings-section h3::before {
+    content: "⚙️";
+    font-size: 1rem;
+}
+
+.amacarun-setting-item {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.amacarun-setting-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.amacarun-setting-label {
+    display: block;
+    font-weight: 600;
+    color: var(--amacarun-dark);
+    margin-bottom: 8px;
+}
+
+.amacarun-setting-description {
+    color: #666;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.amacarun-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.amacarun-checkbox-wrapper input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--amacarun-primary);
+}
+
+/* ==========================================================================
+   Welcome Screen
+   ========================================================================== */
+
+.amacarun-welcome {
+    background: linear-gradient(135deg, var(--amacarun-primary) 0%, var(--amacarun-primary-light) 100%);
+    color: #fff;
+    border-radius: var(--amacarun-radius-lg);
+    padding: 40px;
+    text-align: center;
+    margin: 20px 0;
+    box-shadow: var(--amacarun-shadow-lg);
+}
+
+.amacarun-welcome h2 {
+    font-size: 2.5rem;
+    margin: 0 0 20px 0;
+    font-weight: 300;
+}
+
+.amacarun-welcome p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.amacarun-welcome .amacarun-btn {
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 1rem;
+    padding: 15px 30px;
+}
+
+.amacarun-welcome .amacarun-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.amacarun-admin-footer {
+    margin-top: 50px;
+    padding: 20px 0;
+    border-top: 2px solid var(--amacarun-border);
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.amacarun-admin-footer a {
+    color: var(--amacarun-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.amacarun-admin-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Dark Mode Support (Future)
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    /* 
+    Future implementation for dark mode
+    Currently maintaining light theme for better WordPress admin integration
+    */
+}
